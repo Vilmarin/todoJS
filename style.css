@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.toDo-list {
+    background-color: aqua;
+    padding: 40px;
+    border-radius: 10%;
+    display: flex;
+    flex-direction: column;
+}
+
+.toDo__button {
+    margin: 10px;
+    padding: 10px;
+}
+
+.toDo__title {
+    margin: 10px;
+}
+
+.toDo__input {
+    padding: 10px 20px
+}
