@@ -15,6 +15,8 @@ addButton.addEventListener('click', ()=>{
         checked:false,
     }
 
+    if (addMessage.value =='') return;
+
     todoList.push(newTodo)
     displayTodo()
     addMessage.value =''
@@ -22,19 +24,23 @@ addButton.addEventListener('click', ()=>{
 })
 
 function displayTodo () {
+    if (todoList.length === 0 ) {todo.innerHTML = ''}
     let displayMessage ='';
     todoList.map((item, index)=>{
         displayMessage += `
         <li>
         <input type="checkbox"  id="${index}" ${item.checked ? 'checked' :''}>
         <label for='item_${index}' > ${item.todo} </label>
+        <button onclick = 'deleteTask(${index})' > удалить таску </button>
         </li>`;
 
         todo.innerHTML = displayMessage;
     })
 
-    todo.addEventListener('onclick', (event)=>{
-       delete todoList[event.target.id]
-    })
+}
 
+function deleteTask (index) {
+    todoList.splice(index,1)
+    localStorage.setItem('todo' , JSON.stringify(todoList))
+    displayTodo ()
 }
